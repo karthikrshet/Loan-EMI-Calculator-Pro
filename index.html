@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Loan / EMI Calculator Pro</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{background:linear-gradient(to right,#74ABE2,#5563DE);display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:20px;color:#fff}
+.container{background:rgba(255,255,255,.15);padding:30px;border-radius:10px;width:100%;max-width:900px;text-align:center}
+h1{margin-bottom:10px}
+.row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0}
+input,select,button{padding:10px;border:none;border-radius:6px;font-size:14px}
+input,select{width:100%}
+button{background:#ff7b54;color:#fff;cursor:pointer}
+button:hover{background:#ff5722}
+iframe{width:100%;height:480px;margin-top:20px;border:2px solid #fff;border-radius:8px;background:#fff}
+table{width:100%;border-collapse:collapse;margin-top:15px;background:#fff;color:#000;border-radius:8px;overflow:hidden}
+th,td{border:1px solid #ddd;padding:8px;text-align:right}
+th{text-align:center;background:#f3f3f3}
+.actions{margin-top:12px}
+.muted{opacity:.9;font-size:12px;margin-top:6px}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.card{background:rgba(255,255,255,.9);color:#000;border-radius:8px;padding:10px}
+.card h3{font-size:14px;color:#444}
+.card p{font-weight:700;font-size:18px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Loan / EMI Calculator Pro</h1>
+<div class="row">
+<input id="amount" type="number" placeholder="Loan Amount"/>
+<input id="rate" type="number" step="0.01" placeholder="Annual Interest %"/>
+<input id="tenure" type="number" placeholder="Tenure"/>
+<select id="tenureType"><option value="months">Months</option><option value="years">Years</option></select>
+</div>
+<div class="actions">
+<button id="calcBtn">Calculate</button>
+<button id="downloadCSV">Download CSV</button>
+<button id="downloadPDF">Download PDF</button>
+</div>
+
+
+<div class="summary" id="summaryCards" style="display:none">
+<div class="card"><h3>Monthly EMI</h3><p id="emiOut">$0</p></div>
+<div class="card"><h3>Total Interest</h3><p id="intOut">$0</p></div>
+<div class="card"><h3>Total Payment</h3><p id="totOut">$0</p></div>
+</div>
+
+
+<table id="schedule" style="display:none">
+<thead>
+<tr><th>Month</th><th>EMI</th><th>Interest</th><th>Principal</th><th>Balance</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+
+
+<p class="muted">Tip: Change tenure type to years for long loans.</p>
+</div>
+</html>
